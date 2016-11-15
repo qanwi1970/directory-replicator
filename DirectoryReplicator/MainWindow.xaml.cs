@@ -17,15 +17,13 @@ namespace DirectoryReplicator
 
         private void btnGo_Click(object sender, RoutedEventArgs e)
         {
-            var destinationRoot = new DirectoryInfo(@"C:\Temp\dircopy");
-            var sourceRoot = new DirectoryInfo(@"C:\Users\qanwi\Documents");
             foreach (ListBoxItem item in replicateList.Items)
             {
                 var itemText = item.Content.ToString();
                 var folders = itemText.Split(new[] {" ==> "}, StringSplitOptions.None);
-                sourceRoot = new DirectoryInfo(folders[0]);
-                destinationRoot = new DirectoryInfo(folders[1]);
-                //CopyDirectoryContents(sourceRoot, destinationRoot);
+                var sourceRoot = new DirectoryInfo(folders[0]);
+                var destinationRoot = new DirectoryInfo(folders[1]);
+                CopyDirectoryContents(sourceRoot, destinationRoot);
             }
         }
 
