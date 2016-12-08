@@ -25,6 +25,7 @@ namespace DirectoryReplicator
                 var destinationRoot = new DirectoryInfo(folders[1]);
                 CopyDirectoryContents(sourceRoot, destinationRoot);
             }
+            lblProgress.Content = "";
         }
 
         private void CopyDirectoryContents(DirectoryInfo sourceRoot, DirectoryInfo destinationRoot)
@@ -47,8 +48,12 @@ namespace DirectoryReplicator
                 var newFile = destinationRoot.FullName + "\\" + fileInfo.Name;
                 if (File.Exists(newFile))
                 {
-                    // make sure it's not readonly
                     var newFileInfo = new FileInfo(newFile);
+                    if (newFileInfo.LastWriteTimeUtc >= fileInfo.LastWriteTimeUtc)
+                    {
+                        continue;
+                    }
+                    // make sure it's not readonly
                     if (newFileInfo.IsReadOnly)
                     {
                         newFileInfo.IsReadOnly = false;
@@ -56,6 +61,42 @@ namespace DirectoryReplicator
                 }
                 fileInfo.CopyTo(newFile, true);
             }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Documents ==> C:\Users\qanwi\OneDrive\Documents"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Music ==> C:\Users\qanwi\OneDrive\Music"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Pictures ==> C:\Users\qanwi\OneDrive\Pictures"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Videos ==> C:\Users\qanwi\OneDrive\Videos"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Documents ==> C:\Users\qanwi\Google Drive\Documents"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Music ==> C:\Users\qanwi\Google Drive\Music"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Pictures ==> C:\Users\qanwi\Google Drive\Pictures"
+            });
+            replicateList.Items.Add(new ListBoxItem
+            {
+                Content = @"C:\Users\qanwi\Videos ==> C:\Users\qanwi\Google Drive\Videos"
+            });
         }
     }
 }
