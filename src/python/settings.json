@@ -1,5 +1,12 @@
 {
   "paths": [
-    {"source":"C:\\Users\\qanwi\\Documents", "destination":"C:\\temp\\dircopy\\Documents"}
+    {"source":"C:\\Users\\qanwi\\Documents", "destination":"C:\\Users\\qanwi\\OneDrive\\Documents"},
+    {"source":"C:\\Users\\qanwi\\Music", "destination":"C:\\Users\\qanwi\\OneDrive\\Music"},
+    {"source":"C:\\Users\\qanwi\\Pictures", "destination":"C:\\Users\\qanwi\\OneDrive\\Pictures"},
+    {"source":"C:\\Users\\qanwi\\Videos", "destination":"C:\\Users\\qanwi\\OneDrive\\Videos"},
+    {"source":"C:\\Users\\qanwi\\Documents", "destination":"C:\\Users\\qanwi\\Google Drive\\Documents"},
+    {"source":"C:\\Users\\qanwi\\Music", "destination":"C:\\Users\\qanwi\\Google Drive\\Music"},
+    {"source":"C:\\Users\\qanwi\\Pictures", "destination":"C:\\Users\\qanwi\\Google Drive\\Pictures"},
+    {"source":"C:\\Users\\qanwi\\Videos", "destination":"C:\\Users\\qanwi\\Google Drive\\Videos"}
   ]
 }
